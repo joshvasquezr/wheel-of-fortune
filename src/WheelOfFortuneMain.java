@@ -35,38 +35,44 @@ public class WheelOfFortuneMain {
                 }
         }
 
-        boolean phraseFound = false;
-        int totalLettersFound = 0;
-        while (!phraseFound) {
-            System.out.println("Hidden Phrase: " + hiddenPhrase);
-
-            // Prompt user to start guessing letter by letter
-            String promptUser = "Enter your guess: ";
-            System.out.println(promptUser);
-            Scanner scanner =  new Scanner(System.in);
-            String userGuess = scanner.next();
-            System.out.println("User Guess: " + userGuess);
-
-            // Check User Guess
-            int lettersFound = 0;
-            for (int i = 0; i < phrase.length(); i++) {
-                char guess = userGuess.charAt(0);
-                guess = Character.toLowerCase(guess);
-                char phraseChar = phrase.charAt(i);
-
-                // if TRUE: update hiddenPhrase, lettersFound, else check if user found the whole phrase
-                if (guess == Character.toLowerCase(phraseChar)) {
-                    lettersFound++;
-                    hiddenPhrase.setCharAt(i, phraseChar);
-                } else if (phrase.equals(hiddenPhrase.toString())) {
-                    phraseFound = true;
-                }
-            }
-            totalLettersFound += lettersFound;
-            System.out.println("Letters Found: " + lettersFound);
-            System.out.println("Total Letters Found: " + totalLettersFound);
-            System.out.println();
-        }
-        System.out.println("Woohoo you won! It only took you " + totalLettersFound + " guesses.");
+        // Greeting and Instructions
+        String greeting = "Hello! Welcome to... (*drum roll*)... THE WHEEL OF FORTUNE!";
+        String instructions = "You will be shown a Hidden Phrase that you will need to guess %nThe instructions are as follows%n\t1. You may ONLY guess one letter at a time%n\t\ta. If your guess is CORRECT, the place of the letter(s) will be revealed in the Hidden Phrase%n\t\tb. If your guess is INCORRECT, you gain ONE strike. If you gain THREE strikes. Just like in soccer, you are OUT! ";
+        System.out.println(greeting);
+        System.out.printf(instructions);
+////        boolean phraseFound = false;
+////        int totalLettersFound = 0;
+////        while (!phraseFound) {
+////            System.out.println("Hidden Phrase: " + hiddenPhrase);
+////
+////            // Prompt user to start guessing letter by letter
+////            String promptUser = "Enter your guess: ";
+////            System.out.println(promptUser);
+////            Scanner scanner =  new Scanner(System.in);
+////            String userGuess = scanner.next();
+////            System.out.println("You Guessed: " + userGuess);
+////
+////            // Check User Guess
+////            int lettersFound = 0;
+////            for (int i = 0; i < phrase.length(); i++) {
+////                char guess = userGuess.charAt(0);
+////                guess = Character.toLowerCase(guess);
+////                char phraseChar = phrase.charAt(i);
+////
+////                // if TRUE: update hiddenPhrase, lettersFound, else check if user found the whole phrase
+////                if (guess == Character.toLowerCase(phraseChar)) {
+////                    lettersFound++;
+////                    hiddenPhrase.setCharAt(i, phraseChar);
+////                } else if (phrase.equals(hiddenPhrase.toString())) {
+////                    phraseFound = true;
+////                }
+////            }
+////            // add to the total letters found
+////            totalLettersFound += lettersFound;
+////            System.out.println("Letters Found: " + lettersFound);
+////            System.out.println("Total Letters Found: " + totalLettersFound);
+////            System.out.println();
+////        }
+//        System.out.println("Woohoo you won! It only took you " + totalLettersFound + " guesses.");
     }
 }
