@@ -4,7 +4,53 @@ The Wheel of Fortune project aims to provide a playable version of the popular g
 
 The user is prompted with a hidden phrase which they are to attempt to guess, one letter at a time. The user is also granted three life-lines to get a letter wrong. The user WINS by successfully uncovering the phrase before they exhaust their three life-lines. The user will LOSE if they use up their three life-lines before the phrase if fully uncovered. 
 
-## How To Deploy this app
+### How to Deploy This App
+
+To run the Wheel of Fortune game on your local machine, follow these steps:
+
+1. **Clone the Repository:**
+  - Open your terminal and run the following command to clone the repository:
+    ```bash
+    git clone https://github.com/your-username/wheel-of-fortune.git
+    ```
+  - Navigate into the project directory:
+    ```bash
+    cd wheel-of-fortune
+    ```
+
+2. **Compile the Code:**
+  - Use the following command to compile the Java files:
+    ```bash
+    javac src/*.java
+    ```
+
+3. **Run the Game:**
+  - To run the game, use the following command:
+    ```bash
+    java -cp src WheelOfFortuneMain
+    ```
+  - If you want to run the methods version, use:
+    ```bash
+    java -cp src WheelOfFortuneMethods
+    ```
+  - To run the object-oriented version:
+    ```bash
+    java -cp src WheelOfFortuneObject
+    ```
+  - To play against the bot, use:
+    ```bash
+    java -cp src WheelOfFortuneBot
+    ```
+
+4. **Interact with the Game:**
+  - Follow the on-screen instructions to play the game. You will be prompted to guess letters one at a time, with the goal of uncovering the hidden phrase before running out of lives.
+
+### Prerequisites
+
+- Ensure that you have Java installed on your machine. You can check if Java is installed by running:
+  ```bash
+  java -version
+
 ### Development Process:
 
 This project was all about creating a command-line Wheel of Fortune game, which I built in four different versions, each one a bit more complex than the last. Along the way, I ran into some challenges, but those really helped me learn and improve.
