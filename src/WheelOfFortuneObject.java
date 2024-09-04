@@ -25,7 +25,7 @@ public class WheelOfFortuneObject {
         List<String> phraseList=null;
 
         try {
-            phraseList = Files.readAllLines(Paths.get("phrases.txt"));
+            phraseList = Files.readAllLines(Paths.get("../phrases.txt"));
         } catch (IOException e) {
             System.out.println(e);
         }

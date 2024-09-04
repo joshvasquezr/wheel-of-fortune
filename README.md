@@ -85,6 +85,32 @@ notifying them that they have already previously made that guess
   * Record of their previous guesses
   * The number of remaining life-lines they have
   * A prompt if the User enters a previously guessed letter, absent of correctness
-## Test Plan
-## Test Video
+### Test Plan
 
+I carried out several tests to make sure the `Wheel of Fortune` game works as expected:
+
+1. **Starting the Game:**
+    - Checked that a phrase is correctly picked from `phrases.txt` and that the `hiddenPhrase` is set up with the right number of asterisks and any unhidden characters.
+    - Made sure the game starts with the correct number of lives and no previous guesses.
+
+2. **Handling User Input:**
+    - Tested different inputs, like valid letter guesses, invalid characters (like numbers and symbols), and repeated guesses. Confirmed that the game recognizes valid guesses, updates the `hiddenPhrase`, and ignores invalid inputs without messing up the game.
+
+3. **Game Loop:**
+    - Ran the game from start to finish to check that the user can keep guessing letters, with the game tracking correct and incorrect guesses, updating the hidden phrase, and taking away lives for wrong guesses.
+    - Made sure the game ends correctly when the user either guesses the whole phrase or runs out of lives.
+
+4. **Edge Cases:**
+    - Tested unusual situations like inputting nothing, guessing the whole phrase correctly on the first try, and losing all lives without uncovering any letters. Ensured the game handles these situations properly.
+
+5. **Bot Version:**
+    - For the bot version, confirmed that the bot makes random guesses and the game plays out the same way as with user input, automatically running until the bot wins or loses.
+
+6. **Cloning and Running the Game:**
+    - Checked that the game works on different computers when the project is cloned, making sure `phrases.txt` loads correctly and the game runs without needing code changes.
+
+These tests helped ensure that the game works well under different scenarios and provides a smooth experience.
+
+
+## Test Video
+Coming Soon...
