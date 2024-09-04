@@ -5,71 +5,22 @@ The Wheel of Fortune project aims to provide a playable version of the popular g
 The user is prompted with a hidden phrase which they are to attempt to guess, one letter at a time. The user is also granted three life-lines to get a letter wrong. The user WINS by successfully uncovering the phrase before they exhaust their three life-lines. The user will LOSE if they use up their three life-lines before the phrase if fully uncovered. 
 
 ## How To Deploy this app
-## Development Process
-### The Process
-My first step was to get `WheelOfFortuneMain.java` working. My approach was to
-1. Breakdown the logical sequence of events that I needed my code to execute
-2. Start coding each step and integrating further functionality one step at a time, testing each functionality at every step
-3. Test the whole program
+### Development Process:
 
-My breakdown of the logical sequence of events for my code was as follows:
+This project was all about creating a command-line Wheel of Fortune game, which I built in four different versions, each one a bit more complex than the last. Along the way, I ran into some challenges, but those really helped me learn and improve.
 
-1. Get a random phrase from phrases.txt &#40;this was easy because it was already done for me... thanks Professor!
-2. Encrypt the randomly selected phrase by replacing only the letters with asterisks *
-3. Prompt the User to make a guess
-4. Check the validity of the guess
-5. Check the correctness of the guess
-6. Check if the user had completely uncovered the phrase
+1. **`WheelOfFortuneMain.java`**: I kicked things off with everything packed into a single `main()` method. The game starts by picking a random phrase and turning it into a `hiddenPhrase` by swapping out all the letters with asterisks. The game loop keeps running as long as the player hasn’t uncovered the phrase or run out of lives. The user gets to guess one letter at a time, and I had to figure out how to check those guesses and update the `hiddenPhrase`. One tricky part was managing all the game logic within this one big method, which got messy fast. I also had to make sure I was handling things like empty guesses or invalid inputs, which added another layer of complexity.
 
-This is not an exhaustive list of the logic for my program, but a rough draft of my
-first-go at attempting to _think_ about the logic for the functionality of my 
-program. I implemented the encryption of the randomly selected phrase by creating a 
-new variable `StringBuilder hiddenPhrase = new StringBuilder()`. I then used a `for`
-loop to iterate through the randomly selected phrase, replacing every letter with an
-asterisk. One of my  "Aha!" moments was in realizing that I might want to use a 
-`while` loop for this program. I could tell my program that `while` the User has not
-yet uncovered the full phrase, continue prompting them to input a guess. I then 
-worked on the losing aspect to this game into the `while` loop. As long as the User 
-still had not uncovered the full phrase or their `lives != 0`, then they would still
-get prompted to make guesses. Within the `while` loop I added the functionality that
-would output text prompting the user to input a `guess`. Under that, I created the 
-`if` conditional statement targeted at checking whether the guess was valid (i.e. 
-only a letter). Again within the `while` loop, an `if` statement checking the 
-_correctness_ of the guess was implemented. As long as the guess was correct, the 
-program would edit the `StringBuilder hiddenPhrase` variable by changing the 
-corresponding index of the asterisk(s) with the User's guess, otherwise the program 
-took away one life from the User's remaining "life" balance. My final 
-implementation, was to figure out how to keep track of the previously 
-`guessedLetters` the user had already inputted. I did this by, first, initializing 
-`String guessedLetters = "";`, second, checking if `guess` was a valid guess (i.e. a
-letter), third, if `guessedLetters` was empty (or otherwise if this was the User's 
-first guess), and if `guessedLetters` was not empty, then check whether `guess` is 
-already somewhere in `guessed Letters`. 
+2. **`WheelOfFortuneMethods.java`**: The next version was all about breaking things down into methods to make the code cleaner and easier to manage. I pulled out key operations like `randomPhrase()` for selecting the phrase, `generateHiddenPhrase()` for creating the masked phrase, `getGuess()` for handling user input, and `processGuess()` for updating the game state. This made the code way more modular, but figuring out the right return types and parameters for each method wasn’t always straightforward. Deciding where to put certain bits of logic, like input validation, was another challenge that required some trial and error.
 
+3. **`WheelOfFortuneObject.java`**: Moving on to the third version, I shifted to an object-oriented approach. I wrapped the game’s state and logic into a class with instance variables like `phrase`, `hiddenPhrase`, `guessedLetters`, and `lives`. Refactoring the code to work within this new structure was a bit tough, especially when converting the procedural code into methods that relied on these instance variables. I also had to make sure I was initializing and updating these variables correctly, which led to some bugs—like forgetting to reinitialize the `StringBuilder` in the `generateHiddenPhrase()` method, causing a `NullPointerException`. That was a frustrating but valuable lesson in how Java handles object references.
 
-[//]: # (I will discuss my approach to this project by taking you through my thought-process for each of my four versions.)
+4. **`WheelOfFortuneBot.java`**: The final version brought in a bot to play the game. I extended the `WheelOfFortuneObject` class and overrode the `getGuess()` method to have the bot make random guesses. This version really tested how flexible my object-oriented design was and required some careful tweaking to make sure the bot played by the game’s rules, like not guessing the same letter twice. Overriding the `getGuess()` method wasn’t as simple as I initially thought, and I had to get a better grasp on inheritance and method overriding to make it work smoothly.
 
-[//]: # (#### Version 1: WheelOfFortuneMain.java)
+### Summary:
 
-[//]: # (For this version of the project I began by mentally thinkng through and breaking down each individual aspect that this program needed to contain as well as the *possible* logical sequence it would require. My breakdown went as follows:)
+This project was a great way to dig deeper into Java, especially with concepts like control structures, string manipulation, and object-oriented design. Each version built on the one before it, taking the project from a simple, all-in-one method approach to a more organized, object-oriented design. Along the way, I faced a few challenges, like managing game state and refactoring the code to fit an object-oriented framework, but those challenges were key to improving my understanding of Java. In the end, I ended up with a fully functional command-line game that can be played by both humans and a bot, showing just how powerful and flexible well-structured code can be.
 
-[//]: # (1. Get a random phrase from phrases.txt &#40;this was easy because it was already done for me... thanks Professor!&#41;)
-
-[//]: # (2. Encrypt the randomly selected phrase by replacing only the letters with asterisks *)
-
-[//]: # (3. Prompt the user to make a guess)
-
-[//]: # (4. Check the validity of the guess &#40;letters only&#41;)
-
-[//]: # (5. Check the correctness of the guess &#40;is it in the hidden prhase&#41;)
-
-[//]: # (6. Check if the user had completely uncovered the phrase)
-
-[//]: # ()
-[//]: # (This is a rough example of what my thought process for this first version of the project. My goal was simple. Make this code work and have the working code check-off all of the requirements in the project description.  &#40;add link to project description&#41;. )
-
-[//]: # ()
-[//]: # (My first step was to **encrypt the randomly selected phrase**. This was a simple process because I recall having done this in a previous lab. My algorithm to execute this was simple. I declared my `hiddenPhrase` variable to be of type `StringBuilder` because I knew I was going to need to edit `hiddenPhrase` throughout my code since the User would be uncovering and therein changing `hiddenPhrase`. The immutability of a `String` type would just add in a further complexity to this program that was unnecessary. From there, the algorithm was simple. I created a `for` loop as such: `for &#40;int i = 0; i < hiddenPhrase.length; i++&#41;`, essentially iterating through each character of the randomly selected phrase. Within the `for` loop I added a conditional `if` statement, ensuring that  )
 ## What this project completed
 ### Functionality
 * The phrase for the game is randomly selected and read in from `phrases.txt`
