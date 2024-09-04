@@ -53,9 +53,9 @@ To run the Wheel of Fortune game on your local machine, follow these steps:
 
 ### Development Process:
 
-This project was all about creating a command-line Wheel of Fortune game, which I built in four different versions, each one a bit more complex than the last. Along the way, I ran into some challenges, but those really helped me learn and improve.
+This project was all about creating a command-line Wheel of Fortune game, which I built in four different versions, each one a bit more complex than the previous one. Along the way, I ran into some challenges, but those really helped me learn and improve.
 
-1. **`WheelOfFortuneMain.java`**: I kicked things off with everything packed into a single `main()` method. The game starts by picking a random phrase and turning it into a `hiddenPhrase` by swapping out all the letters with asterisks. The game loop keeps running as long as the player hasn’t uncovered the phrase or run out of lives. The user gets to guess one letter at a time, and I had to figure out how to check those guesses and update the `hiddenPhrase`. One tricky part was managing all the game logic within this one big method, which got messy fast. I also had to make sure I was handling things like empty guesses or invalid inputs, which added another layer of complexity.
+1. **`WheelOfFortuneMain.java`**: I started things off with everything packed into a single `main()` method. The game starts by picking a random phrase and turning it into a `hiddenPhrase` by swapping out all the letters with asterisks. The game loop keeps running as long as the player hasn’t uncovered the phrase or run out of lives. The user gets to guess one letter at a time, and I had to figure out how to check those guesses and update the `hiddenPhrase`. One tricky part was managing all the game logic within this one big method, which got a bit complicated real quickly. I also had to make sure I was handling things like empty guesses or invalid inputs, which added another layer of complexity.
 
 2. **`WheelOfFortuneMethods.java`**: The next version was all about breaking things down into methods to make the code cleaner and easier to manage. I pulled out key operations like `randomPhrase()` for selecting the phrase, `generateHiddenPhrase()` for creating the masked phrase, `getGuess()` for handling user input, and `processGuess()` for updating the game state. This made the code way more modular, but figuring out the right return types and parameters for each method wasn’t always straightforward. Deciding where to put certain bits of logic, like input validation, was another challenge that required some trial and error.
 
@@ -65,7 +65,7 @@ This project was all about creating a command-line Wheel of Fortune game, which 
 
 ### Summary:
 
-This project was a great way to dig deeper into Java, especially with concepts like control structures, string manipulation, and object-oriented design. Each version built on the one before it, taking the project from a simple, all-in-one method approach to a more organized, object-oriented design. Along the way, I faced a few challenges, like managing game state and refactoring the code to fit an object-oriented framework, but those challenges were key to improving my understanding of Java. In the end, I ended up with a fully functional command-line game that can be played by both humans and a bot, showing just how powerful and flexible well-structured code can be.
+This project was a great way to dig deeper into Java, especially with concepts like loops, conditional statements, data types, methods, string manipulation, and object-oriented design. Each version built on the one before it, taking the project from a simple, all-in-one method approach to a more organized, object-oriented design. Along the way, I faced a few challenges, like managing game state and refactoring the code to fit an object-oriented design. In the end, I ended up with a fully functional command-line game that can be played by both humans and a bot, showing just how powerful and flexible well-structured code can be.
 
 ## What this project completed
 ### Functionality
