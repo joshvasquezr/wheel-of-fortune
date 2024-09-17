@@ -15,7 +15,7 @@ public class WheelOfFortuneMain {
         List<String> phraseList=null;
 
         try {
-            phraseList = Files.readAllLines(Paths.get("../phrases.txt"));
+            phraseList = Files.readAllLines(Paths.get("phrases.txt"));
         } catch (IOException e) {
             System.out.println(e);
         }
@@ -24,7 +24,7 @@ public class WheelOfFortuneMain {
         Random rand = new Random();
         int r = rand.nextInt(phraseList.size()); // gets 0, 1, or 2
         String phrase = phraseList.get(r);
-        System.out.println(phrase);
+//        System.out.println(phrase);
 
         // Create the Hidden Phrase - generateHiddenPhrase()
         StringBuilder hiddenPhrase = new StringBuilder();
@@ -38,19 +38,28 @@ public class WheelOfFortuneMain {
         }
 
         // Greeting and Instructions
-        String greeting = "WELCOME TO...%nTHE WHEEL OF FORTUNE! %n%n";
-        String instructions = "HOW TO PLAY%n______________%n%nYou will be shown a Hidden Phrase that you will need to guess %nThe instructions are as follows%n\t1. You may ONLY guess one letter at a time%n\t\ta. If your guess is CORRECT, the place of the letter(s) will be revealed in the Hidden Phrase%n\t\tb. If your guess is INCORRECT, you gain ONE strike. If you gain THREE strikes. Just like in soccer, you are OUT! %n__________________________________________________________________%n%n%n";
+        String greeting = "🎉 WELCOME TO... THE WHEEL OF FORTUNE! 🎉%n%n";
+        String instructions = "📝 HOW TO PLAY 📝%n" +
+                "_____________________________________________%n%n" +
+                "Your challenge is to guess the Hidden Phrase, one letter at a time.%n%n" +
+                "⚙️ Rules of the Game:%n" +
+                "  1️⃣ You may ONLY guess one letter at a time.%n" +
+                "  2️⃣ If your guess is CORRECT, all instances of the letter will be revealed in the Hidden Phrase.%n" +
+                "  3️⃣ If your guess is INCORRECT, you receive one strike.%n" +
+                "  4️⃣ Three strikes, and you're OUT! Just like in baseball!%n%n" +
+                "_____________________________________________%n%n";
         System.out.printf(greeting);
         System.out.printf(instructions);
+
 
         // Game-Code Starts
         boolean phraseFound = false;
         int totalLettersFound = 0;
-        int lives = 3;
+        int strikes = 0;
         String guessedLetters = "";
         Scanner scanner =  new Scanner(System.in);
         String missedGuesses = "";
-        while (!phraseFound || lives != 0) {
+        while (!phraseFound || strikes < 3) {
             System.out.printf("%n%n");
             System.out.println("Hidden Phrase: " + hiddenPhrase);
 
@@ -100,14 +109,19 @@ public class WheelOfFortuneMain {
 
                 // Checks if the user a letter NOT FOUND in the Hidden Phrase and takes away ONE life
                 if (correctGuess == 0) {
-                    lives -= 1; // PENALTY: Minus One Life for incorrect guess
-                    missedGuesses += guess;
-                    if (lives == 0) {
-                        System.out.printf("GAME OVER. You ran out of lives :(%nTry Again!%n");
+                    strikes += 1; // PENALTY: Minus One Life for incorrect guess
+                    missedGuesses += guess + " ";
+                    if (strikes == 3) {
+                        System.out.printf("STRIKE THREE! YOU'REEEEE OUT!%n");
                         System.out.println("The Hidden Phrase was: '" + phrase + "'");
                         break;
                     }
-                    System.out.printf("Incorrect Guess! You now have [ " + lives + " ] LIVES left.%n");
+                    if (strikes == 1) {
+                        System.out.printf("STRIKE ONE!%n");
+                    } else if(strikes == 2) {
+                        System.out.printf("STEEE-RIKE TWO!!%n");
+                    } else if(strikes == 3) {
+                    }
                     System.out.printf("Wrong Guesses: " + missedGuesses);
                 }
 
